@@ -10,10 +10,9 @@
     <version>1.0-SNAPSHOT</version>
 
     <modules>
-        <!--<module>pikachu-core</module>-->
-        <module>pikachu-tool</module>
         <module>pikachu-common</module>
         <module>pikachu-parent</module>
+        <module>pikachu-core</module>
     </modules>
 
     <parent>
@@ -34,21 +33,23 @@
         <spring4all.version>1.7.0.RELEASE</spring4all.version>
         <mysql.version>5.1.41</mysql.version>
         <velocity.version>1.7</velocity.version>
+        <tkmybatis.version>2.0.3</tkmybatis.version>
     </properties>
 
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+    </dependencies>
 
     <dependencyManagement>
         <dependencies>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
-
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-autoconfigure</artifactId>
-            </dependency>
 
             <dependency>
                 <groupId>com.spring4all</groupId>
@@ -74,17 +75,10 @@
 
             <!-- mybatis-plus begin -->
             <dependency>
-                <groupId>com.baomidou</groupId>
-                <artifactId>mybatis-plus-boot-starter</artifactId>
-                <version>${mybatis-plus-boot-starter.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>tomcat-jdbc</artifactId>
-                        <groupId>org.apache.tomcat</groupId>
-                    </exclusion>
-                </exclusions>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>${tkmybatis.version}</version>
             </dependency>
-
             <!-- Code generator test sample-->
             <dependency>
                 <groupId>org.apache.velocity</groupId>

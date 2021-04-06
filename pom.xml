@@ -11,7 +11,7 @@
 
     <modules>
         <module>pikachu-common</module>
-        <module>pikachu-parent</module>
+        <!--<module>pikachu-parent</module>-->
         <module>pikachu-core</module>
     </modules>
 

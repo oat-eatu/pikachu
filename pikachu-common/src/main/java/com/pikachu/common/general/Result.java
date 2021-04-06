@@ -2,8 +2,7 @@ package com.pikachu.common.general;
 
 
 /**
- * @author wangtao
- * @since 2017/11/16
+ * @author dongyang.yu
  * 公共返回类
  */
 public class Result<T> {

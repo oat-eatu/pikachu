@@ -3,7 +3,7 @@ package com.pikachu.common.web;
 /**
  * @author it033
  */
-public enum ErrorCode {
+public enum BaseErrorCode {
 
     /**
      * 服务器错误
@@ -13,13 +13,13 @@ public enum ErrorCode {
     /**
      * 参数错误
      */
-    PARAM_ERROR("500001","参数错误：");
+    PARAM_ERROR("500001","参数错误");
 
 
     private String code;
     private String msg;
 
-    ErrorCode(String code, String msg) {
+    BaseErrorCode(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }

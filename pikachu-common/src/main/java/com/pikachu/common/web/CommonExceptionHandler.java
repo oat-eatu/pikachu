@@ -28,20 +28,20 @@ public class CommonExceptionHandler {
     @ResponseBody
     public Result<Void> handleBindException(BindException bindException) {
         logger.warn("参数异常{}", bindException.getMessage());
-        return Result.fail(ErrorCode.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
+        return Result.fail(BaseErrorCode.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public Result<Void> handleBindException(MethodArgumentNotValidException bindException) {
         logger.warn("参数异常{}", bindException.getMessage());
-        return Result.fail(ErrorCode.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
+        return Result.fail(BaseErrorCode.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Result<Void> handleException(Exception ex) {
         logger.error("内部异常", ex);
-        return Result.fail(ErrorCode.SERVER_ERROR.getCode(), ErrorCode.SERVER_ERROR.getMsg());
+        return Result.fail(BaseErrorCode.SERVER_ERROR.getCode(), BaseErrorCode.SERVER_ERROR.getMsg());
     }
 }

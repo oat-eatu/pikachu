@@ -1,4 +1,4 @@
-package com.pikachu.common.web;
+package com.pikachu.common.exception;
 
 /**
  * 所有业务级别的异常都跑出这个异常

@@ -1,6 +1,7 @@
-package com.pikachu.common.web;
+package com.pikachu.common.exception;
 
-import com.pikachu.common.general.Result;
+import com.pikachu.common.consts.BaseErrorCodeEnum;
+import com.pikachu.common.web.Result;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
@@ -28,20 +29,20 @@ public class CommonExceptionHandler {
     @ResponseBody
     public Result<Void> handleBindException(BindException bindException) {
         logger.warn("参数异常{}", bindException.getMessage());
-        return Result.fail(BaseErrorCode.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
+        return Result.fail(BaseErrorCodeEnum.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseBody
     public Result<Void> handleBindException(MethodArgumentNotValidException bindException) {
         logger.warn("参数异常{}", bindException.getMessage());
-        return Result.fail(BaseErrorCode.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
+        return Result.fail(BaseErrorCodeEnum.PARAM_ERROR.getCode(), bindException.getBindingResult().getFieldError().getDefaultMessage());
     }
 
     @ExceptionHandler(Exception.class)
     @ResponseBody
     public Result<Void> handleException(Exception ex) {
         logger.error("内部异常", ex);
-        return Result.fail(BaseErrorCode.SERVER_ERROR.getCode(), BaseErrorCode.SERVER_ERROR.getMsg());
+        return Result.fail(BaseErrorCodeEnum.SERVER_ERROR.getCode(), BaseErrorCodeEnum.SERVER_ERROR.getMsg());
     }
 }

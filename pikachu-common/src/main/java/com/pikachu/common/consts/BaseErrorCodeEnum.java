@@ -1,9 +1,9 @@
-package com.pikachu.common.web;
+package com.pikachu.common.consts;
 
 /**
  * @author it033
  */
-public enum BaseErrorCode {
+public enum BaseErrorCodeEnum {
 
     /**
      * 服务器错误
@@ -19,7 +19,7 @@ public enum BaseErrorCode {
     private String code;
     private String msg;
 
-    BaseErrorCode(String code, String msg) {
+    BaseErrorCodeEnum(String code, String msg) {
         this.code = code;
         this.msg = msg;
     }

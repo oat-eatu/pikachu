@@ -1,9 +1,9 @@
-package com.pikachu.common.general;
+package com.pikachu.common.web;
 
 
 /**
  * @author dongyang.yu
- * 公共返回类
+ * Web接口返回包装类
  */
 public class Result<T> {
     public Result() {

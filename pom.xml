@@ -11,14 +11,14 @@
 
     <modules>
         <module>pikachu-common</module>
-        <!--<module>pikachu-parent</module>-->
         <module>pikachu-core</module>
+        <module>pikachu-all</module>
     </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.0.3.RELEASE</version>
+        <version>1.5.10.RELEASE</version>
     </parent>
 
     <properties>
@@ -63,6 +63,16 @@
                 <groupId>com.spring4all</groupId>
                 <artifactId>swagger-spring-boot-starter</artifactId>
                 <version>${spring4all.version}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-aop</artifactId>
+                    </exclusion>
+                </exclusions>
             </dependency>
 
             <dependency>

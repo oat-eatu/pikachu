@@ -1,4 +1,4 @@
-package com.pikachu.common.web;
+package com.pikachu.web;
 
 
 /**

@@ -23,7 +23,10 @@ public class PhoneFormatCheckUtil {
 
     private static final Pattern SIMPLE_PHONE_REG = Pattern.compile("^1(2|3|4|5|6|7|8|9)\\d{9}$");
 
+    private static final Pattern CHINA_PHONE_REG = Pattern.compile("^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$");
+
     private static final int DEFAULT_PHONE_LENGTH = 11;
+
     /**
      * 大陆号码或香港号码均可
      */
@@ -44,9 +47,8 @@ public class PhoneFormatCheckUtil {
      * 147
      */
     public static boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
-        String regExp = "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$";
-        Pattern p = Pattern.compile(regExp);
-        Matcher m = p.matcher(str);
+
+        Matcher m = CHINA_PHONE_REG.matcher(str);
         return m.matches();
     }
 
@@ -57,18 +59,6 @@ public class PhoneFormatCheckUtil {
         String regExp = "^(5|6|8|9)\\d{7}$";
         Pattern p = Pattern.compile(regExp);
         Matcher m = p.matcher(str);
-        return m.matches();
-    }
-
-
-    public static boolean isPhone(String phone) {
-        if (SimpleStringUtils.isEmpty(phone)) {
-            return false;
-        }
-        if (phone.length() != DEFAULT_PHONE_LENGTH) {
-            return false;
-        }
-        Matcher m = SIMPLE_PHONE_REG.matcher(phone);
         return m.matches();
     }
 

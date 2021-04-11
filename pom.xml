@@ -36,22 +36,7 @@
         <velocity.version>1.7</velocity.version>
         <tkmybatis.version>2.0.3</tkmybatis.version>
         <springboot.version>2.0.0.RELEASE</springboot.version>
-        <log4jdbc-log4j2-jdbc4.1.version>1.16</log4jdbc-log4j2-jdbc4.1.version>
     </properties>
-
-    <!--  <dependencies>
-              <dependency>
-                  <groupId>org.springframework.boot</groupId>
-                  <artifactId>spring-boot-starter-web</artifactId>
-                  <version>${springboot.version}</version>
-              </dependency>
-
-          <dependency>
-              <groupId>org.springframework.boot</groupId>
-              <artifactId>spring-boot-autoconfigure</artifactId>
-              <version>${springboot.version}</version>
-          </dependency>
-      </dependencies>-->
 
     <dependencyManagement>
         <dependencies>
@@ -125,19 +110,6 @@
                 <!--<scope>test</scope>-->
             </dependency>
 
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-test</artifactId>
-                <scope>test</scope>
-            </dependency>
-            <!-- mybatis-plus end -->
-
-            <dependency>
-                <groupId>org.bgee.log4jdbc-log4j2</groupId>
-                <artifactId>log4jdbc-log4j2-jdbc4.1</artifactId>
-                <version>${log4jdbc-log4j2-jdbc4.1.version}</version>
-            </dependency>
-
 
             <dependency>
                 <groupId>junit</groupId>
@@ -145,13 +117,14 @@
                 <scope>test</scope>
             </dependency>
 
+
             <dependency>
-                <groupId>mysql</groupId>
-                <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.15-bin</version>
-                <scope>runtime</scope>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
             </dependency>
 
+            <!-- mybatis-plus end -->
         </dependencies>
     </dependencyManagement>
 

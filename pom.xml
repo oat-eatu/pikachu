@@ -12,8 +12,8 @@
     <modules>
         <module>pikachu-common</module>
         <module>pikachu-core</module>
-        <module>pikachu-all</module>
         <module>pikachu-web</module>
+        <module>pikachu-all</module>
     </modules>
 
     <parent>

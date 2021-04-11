@@ -18,9 +18,12 @@ public class PhoneFormatCheckUtil {
     /**
      * 固定电话：区号+座机号码+分机号码
      */
-    private static final String fixTelReg = "(?:(\\(\\+?86\\))(0[0-9]{2,3}\\-?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)|" +
+    private static final String FIX_TEL_REG = "(?:(\\(\\+?86\\))(0[0-9]{2,3}\\-?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)|" +
             "(?:(86-?)?(0[0-9]{2,3}\\-?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)";
 
+    private static final Pattern SIMPLE_PHONE_REG = Pattern.compile("^1(2|3|4|5|6|7|8|9)\\d{9}$");
+
+    private static final int DEFAULT_PHONE_LENGTH = 11;
     /**
      * 大陆号码或香港号码均可
      */
@@ -62,12 +65,10 @@ public class PhoneFormatCheckUtil {
         if (SimpleStringUtils.isEmpty(phone)) {
             return false;
         }
-        if (phone.length() != 11) {
+        if (phone.length() != DEFAULT_PHONE_LENGTH) {
             return false;
         }
-        String regExp = "^1(2|3|4|5|6|7|8|9)\\d{9}$";
-        Pattern p = Pattern.compile(regExp);
-        Matcher m = p.matcher(phone);
+        Matcher m = SIMPLE_PHONE_REG.matcher(phone);
         return m.matches();
     }
 
@@ -76,7 +77,7 @@ public class PhoneFormatCheckUtil {
         if (SimpleStringUtils.isEmpty(tel)) {
             return false;
         }
-        Pattern p = Pattern.compile(fixTelReg);
+        Pattern p = Pattern.compile(FIX_TEL_REG);
         Matcher m = p.matcher(tel);
         return m.matches();
     }

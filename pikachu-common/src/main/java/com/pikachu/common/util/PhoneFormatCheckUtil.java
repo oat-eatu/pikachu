@@ -18,14 +18,8 @@ public class PhoneFormatCheckUtil {
     /**
      * 固定电话：区号+座机号码+分机号码
      */
-    private static final String FIX_TEL_REG = "(?:(\\(\\+?86\\))(0[0-9]{2,3}\\-?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)|" +
+    private static final String fixTelReg = "(?:(\\(\\+?86\\))(0[0-9]{2,3}\\-?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)|" +
             "(?:(86-?)?(0[0-9]{2,3}\\-?)?([2-9][0-9]{6,7})+(\\-[0-9]{1,4})?)";
-
-    private static final Pattern SIMPLE_PHONE_REG = Pattern.compile("^1(2|3|4|5|6|7|8|9)\\d{9}$");
-
-    private static final Pattern CHINA_PHONE_REG = Pattern.compile("^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$");
-
-    private static final int DEFAULT_PHONE_LENGTH = 11;
 
     /**
      * 大陆号码或香港号码均可
@@ -47,8 +41,9 @@ public class PhoneFormatCheckUtil {
      * 147
      */
     public static boolean isChinaPhoneLegal(String str) throws PatternSyntaxException {
-
-        Matcher m = CHINA_PHONE_REG.matcher(str);
+        String regExp = "^((13[0-9])|(15[^4])|(18[0,2,3,5-9])|(17[0-8])|(147))\\d{8}$";
+        Pattern p = Pattern.compile(regExp);
+        Matcher m = p.matcher(str);
         return m.matches();
     }
 
@@ -63,11 +58,25 @@ public class PhoneFormatCheckUtil {
     }
 
 
+    public static boolean isPhone(String phone) {
+        if (SimpleStringUtils.isEmpty(phone)) {
+            return false;
+        }
+        if (phone.length() != 11) {
+            return false;
+        }
+        String regExp = "^1(2|3|4|5|6|7|8|9)\\d{9}$";
+        Pattern p = Pattern.compile(regExp);
+        Matcher m = p.matcher(phone);
+        return m.matches();
+    }
+
+
     public static boolean isFixTel(String tel) {
         if (SimpleStringUtils.isEmpty(tel)) {
             return false;
         }
-        Pattern p = Pattern.compile(FIX_TEL_REG);
+        Pattern p = Pattern.compile(fixTelReg);
         Matcher m = p.matcher(tel);
         return m.matches();
     }

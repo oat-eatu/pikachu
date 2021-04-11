@@ -12,14 +12,14 @@ import java.util.regex.Pattern;
  **/
 public class EmailUtil {
 
-    private static final String EMAIL_REG
+    private static final String emailReg
             = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
 
     public static final boolean isEmail(String email) {
         if (StringUtils.isEmpty(email)) {
             return false;
         }
-        Pattern regex = Pattern.compile(EMAIL_REG);
+        Pattern regex = Pattern.compile(emailReg);
         Matcher matcher = regex.matcher(email);
         return matcher.matches();
     }
